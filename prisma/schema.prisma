@@ -32,7 +32,6 @@ model Service {
   barbershopId String
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   description  String
-  stauts       Boolean
   bookings     Booking[]
 }
 
@@ -44,5 +43,6 @@ model Booking {
   service      Service    @relation(fields: [serviceId], references: [id])
   date         DateTime
   barbershopId String
+  status       Boolean
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
 }
