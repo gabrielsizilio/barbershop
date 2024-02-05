@@ -3,6 +3,7 @@ import { db } from "@/app/_lib/prisma";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import BarbershopInfo from "./_components/barbershop-info";
+import ServiceItem from "./_components/service-item";
 
 interface BarbershopsDetailsPage {
     params: {
@@ -20,6 +21,9 @@ const BarbershopsDetailsPage = async ({ params }: BarbershopsDetailsPage) => {
         where: {
             id: params.id
         },
+        include: {
+            services: true
+        }
     })
 
     if (!barbershop) {
@@ -28,7 +32,16 @@ const BarbershopsDetailsPage = async ({ params }: BarbershopsDetailsPage) => {
     }
 
     return (
-        <BarbershopInfo barbershop={barbershop} />
+        <div>
+            <BarbershopInfo barbershop={barbershop} />
+
+            <div className="px-5 py-6 flex flex-col gap-3">
+                {barbershop.services.map((service) => (
+                    <ServiceItem key={service.id} service={service} />
+                ))}
+            </div>
+
+        </div>
     );
 }
 
