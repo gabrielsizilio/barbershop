@@ -1,6 +1,8 @@
 "use client";
 
 import { Button } from "@/app/_components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/app/_components/ui/sheet";
+import SideMenu from "@/app/_components/ui/side-menu";
 import { Barbershop } from "@prisma/client";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
@@ -10,10 +12,10 @@ interface BarbershopProps {
     barbershop: Barbershop
 }
 
-const BarbershopInfo = ({barbershop}: BarbershopProps) => {
+const BarbershopInfo = ({ barbershop }: BarbershopProps) => {
     const router = useRouter()
     const handleBackClick = () => {
-        router.back()
+        router.replace("/")
     }
 
     return (
@@ -22,9 +24,20 @@ const BarbershopInfo = ({barbershop}: BarbershopProps) => {
                 <Button onClick={handleBackClick} size={"icon"} variant={"outline"} className="z-50 absolute top-4 left-4">
                     <ChevronLeftIcon />
                 </Button>
-                <Button size={"icon"} variant={"outline"} className="z-50 absolute top-4 right-4">
-                    <MenuIcon />
-                </Button>
+
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Button variant="outline" size="icon">
+                            <Button size={"icon"} variant={"outline"} className="z-50 absolute top-4 right-4">
+                                <MenuIcon />
+                            </Button>
+                        </Button>
+                    </SheetTrigger>
+
+                    <SheetContent className="p-0">
+                        <SideMenu />
+                    </SheetContent>
+                </Sheet>
 
                 <Image src={barbershop.imageUrl}
                     fill
