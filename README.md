@@ -1,3 +1,9 @@
+# barber-shop 🚀
+Este repositório serve de aprendizado para desenvolvimento full stack utilizando o framework NextJs, Tailwind, React, TypeScript, Prisma e como banco de dados PostgreSQL.
+
+## projeto
+O projeto é uma aplicação web que consista na divulgação e gerenciamento de uma barbearia, com o principal objetivo de facilitar o agendamento de clientes e forncer a estes mais opções de barbearias, bem como preços, serviços e informações. Pela aplicação será possível: pesquisar por barbearias, agendar/cancelar e avaliar serviços, verificar preços... Por parte dos fornecedores de serviço terão acesso a página da sua barbearia, cadastrar/editar/excluir um serviço, agendar/cancelar um horário a um determinado cliente.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
